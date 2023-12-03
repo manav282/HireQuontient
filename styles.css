@@ -1,0 +1,17 @@
+.table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.selected-row {
+    background-color: #d3d3d3 !important;
+}
+
+.pagination-container {
+    margin-top: 10px;
+}
+
+#bulkDeleteBtn {
+    float: right;
+    margin-top: -40px;
+}

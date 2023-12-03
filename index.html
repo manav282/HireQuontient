@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>Admin Dashboard</h2>
+        <input type="text" id="search" placeholder="Search..." class="form-control mb-3">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+        </table>
+        <div class="pagination-container">
+            <button class="btn btn-primary first-page">First</button>
+            <button class="btn btn-primary previous-page">Previous</button>
+            <span id="pagination"></span>
+            <button class="btn btn-primary next-page">Next</button>
+            <button class="btn btn-primary last-page">Last</button>
+        </div>
+        <button class="btn btn-danger bulk-delete" id="bulkDeleteBtn">Bulk Delete <i
+                class="fas fa-trash-alt"></i></button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="scripts.js"></script>
+    <script>
+        // Fetch data from the provided API endpoint
+        fetch('https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json')
+            .then(response => response.json())
+            .then(data => {
+                // Assuming data is an array of user objects
+                users = data;
+                renderUsers();
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+
+</body>
+
+</html>
